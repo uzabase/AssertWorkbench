@@ -44,17 +44,17 @@
     <properties>
         <project.version>0.1.1</project.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <kotlin.version>1.7.10</kotlin.version>
+        <kotlin.version>2.0.0</kotlin.version>
         <jsonpathkt.version>2.0.1</jsonpathkt.version>
-        <junit_jupiter.version>5.8.1</junit_jupiter.version>
-        <kluent.version>1.68</kluent.version>
-        <maven_surefire_plugin.version>2.22.2</maven_surefire_plugin.version>
-        <maven_source_plugin.version>3.2.1</maven_source_plugin.version>
-        <maven_gpg_plugin.version>3.0.1</maven_gpg_plugin.version>
-        <nexus-staging-maven-plugin.version>1.6.13</nexus-staging-maven-plugin.version>
+        <junit_jupiter.version>5.11.0-M2</junit_jupiter.version>
+        <kluent.version>1.73</kluent.version>
+        <maven_surefire_plugin.version>3.3.1</maven_surefire_plugin.version>
+        <maven_source_plugin.version>3.3.1</maven_source_plugin.version>
+        <maven_gpg_plugin.version>3.2.4</maven_gpg_plugin.version>
+        <nexus-staging-maven-plugin.version>1.7.0</nexus-staging-maven-plugin.version>
         <nexus-staging-maven-plugin.nexusUrl>https://oss.sonatype.org/</nexus-staging-maven-plugin.nexusUrl>
-        <dokka.version>1.5.31</dokka.version>
-        <kotlin_as_java_plugin.version>1.5.31</kotlin_as_java_plugin.version>
+        <dokka.version>1.9.20</dokka.version>
+        <kotlin_as_java_plugin.version>1.9.20</kotlin_as_java_plugin.version>
     </properties>
 
     <dependencies>
