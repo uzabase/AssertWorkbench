@@ -19,7 +19,7 @@ import java.sql.DriverManager
 data class User(
     val user_id: Int,
     val name: String
-) : Entity("user")
+) : Entity("user_profile")
 
 internal class DatabaseTest {
     companion object {
@@ -53,14 +53,14 @@ internal class DatabaseTest {
         )
         conn.createStatement().execute(
             """
-            CREATE TABLE IF NOT EXISTS test_schema.user (
+            CREATE TABLE IF NOT EXISTS test_schema.user_profile (
             user_id INTEGER primary key,
             name varchar
             )
         """.trimIndent()
         )
         conn.createStatement().execute("delete from test_schema.todo;")
-        conn.createStatement().execute("delete from test_schema.user;")
+        conn.createStatement().execute("delete from test_schema.user_profile;")
     }
 
     @AfterEach
@@ -130,7 +130,7 @@ internal class DatabaseTest {
     fun `テーブルの1レコードをinsertする`() {
         val table = org.assertj.db.type.Table(
             Source("jdbc:h2:mem:test;MODE=PostgreSQL;DB_CLOSE_DELAY=-1", "sa", ""),
-            "test_schema.user"
+            "test_schema.user_profile"
         )
         target.insert(User(1, "taro"))
         Assertions.assertThat(table)
@@ -143,11 +143,11 @@ internal class DatabaseTest {
     fun `テーブルの1レコードをdeleteする`() {
         val table = org.assertj.db.type.Table(
             Source("jdbc:h2:mem:test;MODE=PostgreSQL;DB_CLOSE_DELAY=-1", "sa", ""),
-            "test_schema.user"
+            "test_schema.user_profile"
         )
         conn.createStatement().execute(
             """
-            INSERT INTO test_schema.user VALUES (1, 'taro')
+            INSERT INTO test_schema.user_profile VALUES (1, 'taro')
         """.trimIndent()
         )
 
@@ -163,7 +163,7 @@ internal class DatabaseTest {
         )
         val user = org.assertj.db.type.Table(
             Source("jdbc:h2:mem:test;MODE=PostgreSQL;DB_CLOSE_DELAY=-1", "sa", ""),
-            "test_schema.user"
+            "test_schema.user_profile"
         )
         conn.createStatement().execute(
             """
@@ -172,11 +172,11 @@ internal class DatabaseTest {
         )
         conn.createStatement().execute(
             """
-            INSERT INTO test_schema.user VALUES (1, 'taro')
+            INSERT INTO test_schema.user_profile VALUES (1, 'taro')
         """.trimIndent()
         )
 
-        target.truncate("todo", "user")
+        target.truncate("todo", "user_profile")
 
         Assertions.assertThat(todo).isEmpty
         Assertions.assertThat(user).isEmpty
